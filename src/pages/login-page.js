@@ -1,6 +1,7 @@
 //1: librerias que estemos trabajando
 import { LitElement, html, css, nothing } from 'lit';
 //2: componentes externos
+import { Router } from '@vaadin/router';
 //3: componentes personalizados
 import '../layouts/public-layout.js';
 import '../components/alert-component.js';
@@ -52,15 +53,17 @@ export class LoginPage extends LitElement {
   }
 
   handleLoginError(event) {
+    const { error } = event.detail;
     this.alertType = 'error';
-    this.alertMessage = 'Error en el inicio de sesión';
+    this.alertMessage = `Error en el inicio de sesión ${error || ''}`;
   }
 
   handleLoginSuccess(event) {
-    const { email } = event.detail;
     this.alertType = 'success';
     this.alertMessage = 'Inicio de sesión exitoso';
+    Router.go('/home');
   }
+
   handleLoginWarning(event) {}
 
   render() {
