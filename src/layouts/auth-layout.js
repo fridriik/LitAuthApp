@@ -14,8 +14,8 @@ export class AuthLayout extends LitElement {
         padding: 16px;
       }
       main {
-        background-color: #f1f8ff;
-        color:#0f1b2b;
+        background-color: #0c447b;
+        color:#f1f8ff;
         padding: 16px;
       }
       footer {

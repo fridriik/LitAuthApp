@@ -29,6 +29,10 @@ export class LoginPage extends AuthMixin(LitElement) {
         flex-direction: column;
         align-items: center;
       }
+      h1{
+        text-align: center;
+        color:#f1f8ff;
+      }
     `,
   ];
 
@@ -70,6 +74,7 @@ export class LoginPage extends AuthMixin(LitElement) {
   render() {
     return html`
       <public-layout>
+      <h1>Lit Authentication App Login</h1>
         <login-component></login-component>
         ${this.alertType
           ? html`<alert-component

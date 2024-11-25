@@ -7,7 +7,7 @@ export class PublicLayout extends LitElement {
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: #f1f8ff;
+        background-color: #0c447b;
         width: 100vw;
         height: 100vh;
       }

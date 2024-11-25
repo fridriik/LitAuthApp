@@ -1,9 +1,11 @@
 import { LitElement, html, css } from 'lit';
+import { Router } from '@vaadin/router';
 import '@dile/ui/components/nav/nav.js';
-import '@dile/ui/components/hamburger/hamburger.js';
+import '@dile/ui/components/menu-hamburger/menu-hamburger.js';
 import { AuthMixin } from './../mixins/auth-mixin';
 import '../layouts/auth-layout.js';
-import { Router } from '@vaadin/router';
+import '../components/info-home-component.js'
+
 
 export class HomePage extends AuthMixin(LitElement) {
   static styles = [
@@ -12,15 +14,18 @@ export class HomePage extends AuthMixin(LitElement) {
         display: block;
         --dile-primary-color: #0f1b2b;
         --dile-foreground-color: #f1f8ff;
+        --dile-primary-light-color: #0c447b;
+      }
+      nav {
+        display: flex;
+        align-items: stretch;
+        padding: 16px;
+      }
+      title {
+        overflow:auto;
       }
       h2 {
         margin: 0;
-      }
-      .hamburger2 {
-        position: relative;
-        top: -2px;
-        --dile-hamburger-padding-x: 0;
-        --dile-hamburger-color: #369;
       }
       button {
         margin-top: 8px;
@@ -48,19 +53,17 @@ export class HomePage extends AuthMixin(LitElement) {
   render() {
     return html`
       <auth-layout>
-        <dile-nav slot="header" menu="right">
+        <dile-nav slot="header" menu="left">
           <h2 slot="title">HomePage</h2>
-          <dile-hamburger class="hamburger2" slot="menu">
+          <dile-menu-hamburger slot="menu" direction="left">
             <nav slot="menu">
-              <p><a href="one.html">Link One</a></p>
-              <p><a href="two.html">Link Two</a></p>
+              <button slot="actions" @click="${this.handleLogOut}">
+                Logout
+              </button>
             </nav>
-          </dile-hamburger>
-          <button slot="actions" @click="${this.handleLogOut}">Logout</button>
+          </dile-menu-hamburger>
         </dile-nav>
-        <div slot="main">
-          <h1>Lit Auth App</h1>
-        </div>
+        <info-home-component slot="main"></info-home-component>
         <p slot="footer">Todos los derechos reservados</p>
       </auth-layout>
     `;

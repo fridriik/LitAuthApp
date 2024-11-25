@@ -24,7 +24,6 @@ export class LoginComponent extends LitElement {
         gap: 8px;
         width: 50vw;
         margin: auto;
-        border: 1px solid grey;
         border-radius: 8px;
         padding: 16px;
         background-color: #0f1b2b;
