@@ -73,8 +73,7 @@ export class LoginComponent extends LitElement {
       }
 
       button:hover {
-        background-color: #d2e2f2;
-        color: #040506;
+        background: #2a72b9;
       }
     `,
   ];

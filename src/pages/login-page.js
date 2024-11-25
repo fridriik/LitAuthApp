@@ -64,7 +64,6 @@ export class LoginPage extends AuthMixin(LitElement) {
     this.login(token);
     this.alertType = 'success';
     this.alertMessage = 'Inicio de sesión exitoso';
-    console.log(event);
     Router.go('/home');
   }
 

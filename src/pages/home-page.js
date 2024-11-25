@@ -22,6 +22,21 @@ export class HomePage extends AuthMixin(LitElement) {
         --dile-hamburger-padding-x: 0;
         --dile-hamburger-color: #369;
       }
+      button {
+        margin-top: 8px;
+        padding: 16px;
+        font-size: 16px;
+        border-radius: 8px;
+        border-width: 0px;
+        background: #a01c1c;
+        color: #f1f8ff;
+        font-family: 'Trebuchet MS';
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #d53333;
+      }
     `,
   ];
 
