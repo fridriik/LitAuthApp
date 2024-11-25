@@ -1,9 +1,11 @@
 import { LitElement, html, css } from 'lit';
 import '@dile/ui/components/nav/nav.js';
 import '@dile/ui/components/hamburger/hamburger.js';
+import { AuthMixin } from './../mixins/auth-mixin';
 import '../layouts/auth-layout.js';
+import { Router } from '@vaadin/router';
 
-export class HomePage extends LitElement {
+export class HomePage extends AuthMixin(LitElement) {
   static styles = [
     css`
       :host {
@@ -23,6 +25,11 @@ export class HomePage extends LitElement {
     `,
   ];
 
+  handleLogOut() {
+    this.logout();
+    Router.go('/login');
+  }
+
   render() {
     return html`
       <auth-layout>
@@ -34,8 +41,11 @@ export class HomePage extends LitElement {
               <p><a href="two.html">Link Two</a></p>
             </nav>
           </dile-hamburger>
-          <span slot="actions">Action</span>
+          <button slot="actions" @click="${this.handleLogOut}">Logout</button>
         </dile-nav>
+        <div slot="main">
+          <h1>Lit Auth App</h1>
+        </div>
         <p slot="footer">Todos los derechos reservados</p>
       </auth-layout>
     `;

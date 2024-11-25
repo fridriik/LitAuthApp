@@ -3,12 +3,13 @@ import { LitElement, html, css, nothing } from 'lit';
 //2: componentes externos
 import { Router } from '@vaadin/router';
 //3: componentes personalizados
+import { AuthMixin } from './../mixins/auth-mixin';
 import '../layouts/public-layout.js';
 import '../components/alert-component.js';
 import '../components/login-component.js';
 //4: estilos
 
-export class LoginPage extends LitElement {
+export class LoginPage extends AuthMixin(LitElement) {
   static get properties() {
     return {
       alertType: { type: String },
@@ -59,8 +60,11 @@ export class LoginPage extends LitElement {
   }
 
   handleLoginSuccess(event) {
+    const token = 'true';
+    this.login(token);
     this.alertType = 'success';
     this.alertMessage = 'Inicio de sesión exitoso';
+    console.log(event);
     Router.go('/home');
   }
 
