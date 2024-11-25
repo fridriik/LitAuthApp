@@ -7,7 +7,6 @@ import { AuthMixin } from './../mixins/auth-mixin';
 import '../layouts/public-layout.js';
 import '../components/alert-component.js';
 import '../components/login-component.js';
-//4: estilos
 
 export class LoginPage extends AuthMixin(LitElement) {
   static get properties() {
@@ -35,39 +34,38 @@ export class LoginPage extends AuthMixin(LitElement) {
 
   connectedCallback() {
     super.connectedCallback();
+    this.addEventListener('login-attempt', this.handleLoginAttempt.bind(this));
     this.addEventListener('login-error', this.handleLoginError.bind(this));
-    this.addEventListener('login-success', this.handleLoginSuccess.bind(this));
-    this.addEventListener('login-warning', this.handleLoginWarning.bind(this));
   }
 
   disconnectedCallback() {
+    this.removeEventListener('login-attempt',this.handleLoginAttempt.bind(this));
     this.removeEventListener('login-error', this.handleLoginError.bind(this));
-    this.removeEventListener(
-      'login-success',
-      this.handleLoginSuccess.bind(this)
-    );
-    this.removeEventListener(
-      'login-warning',
-      this.handleLoginWarning.bind(this)
-    );
     super.disconnectedCallback();
+  }
+
+  handleLoginAttempt(event) {
+    const { email, password } = event.detail;
+    const result = this.login(email, password); 
+  
+    if (result.success) {
+      Router.go('/home'); 
+    } else {
+      this.dispatchEvent(
+        new CustomEvent('login-error', {
+          detail: { error: result.error },
+          bubbles: true,
+          composed: true,
+        })
+      );
+    }
   }
 
   handleLoginError(event) {
     const { error } = event.detail;
     this.alertType = 'error';
-    this.alertMessage = `Error en el inicio de sesión ${error || ''}`;
+    this.alertMessage = `Error en el inicio de sesión ${error}`;
   }
-
-  handleLoginSuccess(event) {
-    const token = 'true';
-    this.login(token);
-    this.alertType = 'success';
-    this.alertMessage = 'Inicio de sesión exitoso';
-    Router.go('/home');
-  }
-
-  handleLoginWarning(event) {}
 
   render() {
     return html`

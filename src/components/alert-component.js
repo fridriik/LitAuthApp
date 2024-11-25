@@ -27,22 +27,6 @@ export class AlertComponent extends LitElement {
             .error { 
                 background-color: var(--color-error, #F2DEDE); 
                 color: #A94442; 
-                border-color: #EBCCD1; 
-            }
-            .success { 
-                background-color: var(--color-success,#DFF0D8); 
-                color: #3C763D; 
-                border-color: #D6E9C6;
-            }
-            .info { 
-                background-color: var(--color-info,#D9EDF7); 
-                color: #31708F; 
-                border-color: #BCE8F1; 
-            }
-            .warning { 
-                background-color: var(--color-warning,#FFE5B4); 
-                color: #D2691E; 
-                border-color: #FFCC99; 
             }
 
         `

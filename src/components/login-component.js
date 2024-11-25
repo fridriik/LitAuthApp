@@ -81,10 +81,16 @@ export class LoginComponent extends LitElement {
   handleSubmit(event) {
     event.preventDefault();
 
-    this.dispatchCustomEvent('login-success', {
-      email: this.email,
-      password: this.password,
-    });
+    this.dispatchEvent(
+      new CustomEvent('login-attempt', {
+        detail: {
+          email: this.email,
+          password: this.password,
+        },
+        bubbles: true,
+        composed: true,
+      })
+    );
 
     this.initProperties();
   }
@@ -93,27 +99,6 @@ export class LoginComponent extends LitElement {
     this.email = '';
     this.password = '';
   }
-
-  dispatchCustomEvent(eventName, detail) {
-    const event = new CustomEvent(eventName, {
-      detail,
-      bubbles: true,
-      composed: true,
-    });
-
-    this.dispatchEvent(event);
-  }
-
-  /*
-    handleInputChangeEmail(event){
-        event.preventDefault();
-        this.email = event.target.value;
-    }
-
-    handleInputChangePassword(event){
-        event.preventDefault();
-        this.password = event.target.value;
-    }*/
 
   handleInputChange(event) {
     const { name, value } = event.target;
