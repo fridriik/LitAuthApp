@@ -22,7 +22,6 @@ export class AlertComponent extends LitElement {
                 width:50vw; 
                 border: 1px solid transparent; 
                 border-radius: 8px; 
-                font-family:'Trebuchet MS';
             }
             .error { 
                 background-color: var(--color-error, #F2DEDE); 

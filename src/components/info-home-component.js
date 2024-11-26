@@ -1,4 +1,5 @@
 import { LitElement, html, css } from 'lit';
+import './section-component.js';
 
 class InfoHomeComponent extends LitElement {
   static styles = css`
@@ -9,18 +10,19 @@ class InfoHomeComponent extends LitElement {
     h1 {
       text-align: center;
     }
+    a {
+      color: #B3FCFF;
+    }
+    a:hover {
+      color: var(--dile-foreground-color);
+    }
     .grid-container {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      grid-template-rows: auto;
       gap: 16px;
     }
     .top-row {
       grid-column: span 2;
-    }
-    .section {
-      padding: 16px;
-      border-radius: 8px;
     }
   `;
 
@@ -37,78 +39,35 @@ class InfoHomeComponent extends LitElement {
           </p>
         </div>
 
-        <div class="section">
-          <h2>Funcionalidades</h2>
-          <ul>
-            <li>
-              <strong>Autenticación de Usuario</strong>: Sistema de login y
-              logout básico.
-            </li>
-            <li>
-              <strong>Gestión de Estado</strong>: Persistencia del estado de
-              autenticación en <code>localStorage</code>.
-            </li>
-            <li>
-              <strong>Mixins</strong>: Para verificar y redirigir usuarios
-              autenticados.
-            </li>
-            <li>
-              <strong>Navegación</strong>: Implementación de rutas con
-              <a href="https://github.com/vaadin/router">@vaadin/router</a>.
-            </li>
-          </ul>
-        </div>
+        <section-component>
+          <span slot="title">Funcionalidades</span>
+          <li slot="item"><strong>Autenticación de Usuario</strong>: Sistema de login y logout básico.</li>
+          <li slot="item"><strong>Gestión de Estado</strong>: Persistencia del estado de autenticación en <code>localStorage</code>.</li>
+          <li slot="item"><strong>Mixins</strong>: Para verificar y redirigir usuarios autenticados.</li>
+          <li slot="item"><strong>Navegación</strong>: Implementación de rutas con <a href="https://github.com/vaadin/router">@vaadin/router</a>.</li>
+        </section-component>
 
-        <div class="section">
-          <h2>Componentes base</h2>
-          <ol>
-            <li>
-              <strong>login-component</strong>: Formulario para autenticar al
-              usuario.
-            </li>
-            <li>
-              <strong>alert-component</strong>: Muestra mensajes de error en
-              caso de login fallido.
-            </li>
-            <li>
-              <strong>home-page</strong>: Página principal, accesible solo si el
-              usuario está autenticado.
-            </li>
-            <li><strong>login-page</strong>: Página de inicio de sesión.</li>
-          </ol>
-        </div>
+        <section-component>
+          <span slot="title">Componentes base</span>
+          <li slot="item"><strong>login-component</strong>: Formulario para autenticar al usuario.</li>
+          <li slot="item"><strong>alert-component</strong>: Muestra mensajes de error en caso de login fallido.</li>
+          <li slot="item"><strong>home-page</strong>: Página principal, accesible solo si el usuario está autenticado.</li>
+          <li slot="item"><strong>login-page</strong>: Página de inicio de sesión.</li>
+        </section-component>
 
-        <div class="section">
-          <h2>Uso</h2>
-          <ul>
-            <li>
-              <strong>Ruta <code>/login</code></strong
-              >: Página de inicio de sesión.
-            </li>
-            <li>
-              <strong>Ruta <code>/home</code></strong
-              >: Página protegida, accesible solo con autenticación.
-            </li>
-            <li>
-              <strong>User <code>admin@admin.com</code></strong
-              >: Email para ingresar.
-            </li>
-            <li>
-              <strong>Pass <code>admin123</code></strong
-              >: Contraseña para ingresar.
-            </li>
-          </ul>
-        </div>
+        <section-component>
+          <span slot="title">Uso</span>
+          <li slot="item"><strong>Ruta <code>/login</code></strong>: Página de inicio de sesión.</li>
+          <li slot="item"><strong>Ruta <code>/home</code></strong>: Página protegida, accesible solo con autenticación.</li>
+          <li slot="item"><strong>User <code>admin@admin.com</code></strong>: Email para ingresar.</li>
+          <li slot="item"><strong>Pass <code>admin123</code></strong>: Contraseña para ingresar.</li>
+        </section-component>
 
-        <div class="section">
-          <h2>Tecnologías</h2>
-          <ul>
-            <li><a href="https://lit.dev">Lit</a></li>
-            <li>
-              <a href="https://github.com/vaadin/router">@vaadin/router</a>
-            </li>
-          </ul>
-        </div>
+        <section-component>
+          <span slot="title">Tecnologías</span>
+          <li slot="item"><a href="https://lit.dev">Lit</a></li>
+          <li slot="item"><a href="https://github.com/vaadin/router">@vaadin/router</a></li>
+        </section-component>
       </div>
     `;
   }

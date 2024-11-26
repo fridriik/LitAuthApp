@@ -31,7 +31,7 @@ export class LoginPage extends AuthMixin(LitElement) {
       }
       h1{
         text-align: center;
-        color:#f1f8ff;
+        color: var(--dile-foreground-color);
       }
     `,
   ];

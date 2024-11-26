@@ -26,19 +26,17 @@ export class LoginComponent extends LitElement {
         margin: auto;
         border-radius: 8px;
         padding: 16px;
-        background-color: #0f1b2b;
+        background-color: var(--dile-primary-color);
       }
 
       h1 {
         text-align: center;
         margin-top: 8px;
-        color: #f1f8ff;
-        font-family: 'Trebuchet MS';
+        color: var(--dile-foreground-color);
       }
 
       label {
         font-weight: bold;
-        font-family: 'Trebuchet MS';
       }
 
       input {
@@ -46,8 +44,7 @@ export class LoginComponent extends LitElement {
         font-size: 16px;
         border: 1px solid grey;
         border-radius: 8px;
-        font-family: 'Trebuchet MS';
-        background-color: #f1f8ff;
+        background-color: var(--dile-foreground-color);
         color: #0f1b2b;
       }
 
@@ -65,9 +62,10 @@ export class LoginComponent extends LitElement {
         font-size: 16px;
         border-radius: 8px;
         border-width: 0px;
-        background: #0c447b;
-        color: #f1f8ff;
-        font-family: 'Trebuchet MS';
+        background-color: var(--dile-primary-light-color);
+        color: var(--dile-foreground-color);
+        font-family: var(--font-global);
+        font-weight:bold;
         cursor: pointer;
       }
 

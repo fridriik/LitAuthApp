@@ -10,12 +10,12 @@ export class AuthLayout extends LitElement {
         min-height: 100vh;
       }
       header, footer {
-        background-color: #0f1b2b;
+        background-color: var(--dile-primary-color);
         padding: 16px;
       }
       main {
-        background-color: #0c447b;
-        color:#f1f8ff;
+        background-color: var(--dile-primary-light-color);
+        color:var(--dile-foreground-color);
         padding: 16px;
       }
       footer {

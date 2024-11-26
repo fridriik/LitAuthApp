@@ -12,9 +12,6 @@ export class HomePage extends AuthMixin(LitElement) {
     css`
       :host {
         display: block;
-        --dile-primary-color: #0f1b2b;
-        --dile-foreground-color: #f1f8ff;
-        --dile-primary-light-color: #0c447b;
       }
       nav {
         display: flex;
@@ -33,14 +30,16 @@ export class HomePage extends AuthMixin(LitElement) {
         font-size: 16px;
         border-radius: 8px;
         border-width: 0px;
-        background: #a01c1c;
-        color: #f1f8ff;
-        font-family: 'Trebuchet MS';
+        background-color: var(--dile-foreground-color);
+        color: var(--dile-primary-light-color);
+        font-family: var(--font-global);
+        font-weight:bold;
         cursor: pointer;
       }
 
       button:hover {
         background-color: #d53333;
+        color: var(--dile-foreground-color)
       }
     `,
   ];
