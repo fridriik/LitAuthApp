@@ -7,27 +7,34 @@ export class RouterApp extends AuthMixin(LitElement) {
     const router = new Router(this.shadowRoot.querySelector('#outlet'));
     router.setRoutes([
       {
+        path: '/',
+        action: this.handleRedirect.bind(this, '/home', '/login'),
+      },
+      {
         path: '/home',
         component: 'home-page',
-        //Context contiene info del path y params
-        //Commands funciones para controlar navegación
-        action: (context, commands) => {
-          if (!this.checkAuth()) {
-            return commands.redirect('/login');
-          }
-        },
+        action: this.handleRedirect.bind(this, null, '/login'),
       },
       {
         path: '/login',
         component: 'login-page',
-        action: (context, commands) => {
-          if (this.checkAuth()) {
-            return commands.redirect('/home');
-          }
-        },
+        action: this.handleRedirect.bind(this, '/home', null),
       },
-      { path: '/', component: 'login-page' },
+      { path: '(.*)', redirect: '/' },
     ]);
+  }
+
+  //RedirectIfAuth - ruta si está autenticado
+  //RedirectIfNotAuth - ruta si no está autenticado.
+  //Commands - funciones para controlar navegación
+  handleRedirect(redirectIfAuth, redirectIfNotAuth, context, commands) {
+    const isAuth = this.checkAuth();
+    if (isAuth && redirectIfAuth) {
+      return commands.redirect(redirectIfAuth);
+    }
+    if (!isAuth && redirectIfNotAuth) {
+      return commands.redirect(redirectIfNotAuth);
+    }
   }
 
   static styles = [
@@ -42,4 +49,5 @@ export class RouterApp extends AuthMixin(LitElement) {
     return html`<div id="outlet"></div>`;
   }
 }
+
 customElements.define('router-app', RouterApp);
